@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,11 +27,9 @@ public class TietokoneController {
 	// Injektoidaan standardi JPA:ta käyttävä TietokoneDAO komponentti
 
 	@Inject
-	// @Autowired
 	private TietokoneDAO tkp;
 
 	// Lomakkeen luominen
-
 	@RequestMapping(value = "/lomake", method = RequestMethod.GET)
 	public String newForm(Model model) {
 		Tietokone tk = new Tietokone();
@@ -39,20 +38,15 @@ public class TietokoneController {
 	}
 
 	// Lomakkeen tietojen ottaminen vastaan
-
 	@RequestMapping(value = "/lomake", method = RequestMethod.POST)
-	public String addNew(@Valid Tietokone tk, ModelMap model) {
-
-		// vakiokone talteen
-		Tietokone tk2 = new Tietokone();
-		tk2.setMerkki("Apple");
-		tk2.setMalli("MacBook");
-		tkp.save(tk2);
+	public String addNew(@ModelAttribute(value="tietokone") @Valid Tietokone tk, BindingResult result) {
 
 		// tallennetaan lomakkeelta luettu kone
-		Tietokone tkone = tkp.save(tk);
-		model.addAttribute("tietokone", tkone);
-		return "uusi";
+		if (result.hasErrors()) {
+			return "lomake";
+		} 
+		tkp.save(tk);
+		return "redirect:/nayta/" + tk.getId();
 	}
 
 	// Kaikki tietokoneet listattuna
@@ -64,4 +58,10 @@ public class TietokoneController {
 		return "listaa";
 	}
 
+	@RequestMapping(value="nayta/{id}", method=RequestMethod.GET)
+	public String getView(@PathVariable Integer id, Model model) {
+		Tietokone tk = tkp.findById(id);
+		model.addAttribute("tietokone", tk);
+		return "nayta";
+	}
 }

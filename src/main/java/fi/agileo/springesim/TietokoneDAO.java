@@ -57,6 +57,14 @@ public class TietokoneDAO implements Serializable {
 		return koneet;
 	}
 
+	@SuppressWarnings("unchecked")
+	public Tietokone findById(Integer intId) {
+		Long id = new Long(intId);
+		Tietokone kone = (Tietokone) em.createQuery("select t from Tietokone t where t.id=:id")
+				.setParameter("id", id).getSingleResult();
+		return kone;
+	}
+	
 	public Tietokone save(Tietokone kone) {
 		em.persist(kone);
 		return kone;

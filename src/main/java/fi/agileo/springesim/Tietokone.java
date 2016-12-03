@@ -3,6 +3,7 @@ package fi.agileo.springesim;
 import java.io.Serializable;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 
 /**
@@ -26,7 +27,9 @@ public class Tietokone implements Serializable {
 		return id;
 	}
 
+	@Size(min = 1, max = 99)
 	String merkki;
+	@Size(min = 1, max = 99)
 	String malli;
 
 	public Tietokone() {
