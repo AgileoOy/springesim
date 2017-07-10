@@ -24,7 +24,7 @@
 		<a href="?lang=en">en</a> | <a href="?lang=fi">fi</a> | <a href="?lang=sv">sv</a>
 	</div>
 	<h1>
-		<spring:message code="tietokone.view.heading"/>
+		Tietokoneen tiedot
 	</h1>
 	<h2>Uusi kone</h2>
 
@@ -32,17 +32,17 @@
 
 		<table>
 			<tr>
-				<td><label for="merkki"><spring:message code="tietokone.create.mark"/>: </label></td>
+				<td><label for="merkki">Merkki: </label></td>
 				<td><form:input path="merkki" id="merkki" /></td>
 				<td><form:errors path="merkki" cssClass="error" /></td>
 			</tr>
 			<tr>
-				<td><label for="malli"><spring:message code="tietokone.create.model"/>: </label></td>
+				<td><label for="malli">Malli: </label></td>
 				<td><form:input path="malli" id="malli" /></td>
 				<td><form:errors path="malli" cssClass="malli" /></td>
 			</tr>
 			<tr>
-				<td><input type="submit" value=<spring:message code="tietokone.create.add"/>  /></td>
+				<td><input type="submit" value="Lisää"  /></td>
 			</tr>
 
 		</table>

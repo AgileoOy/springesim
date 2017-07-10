@@ -5,7 +5,7 @@
 <%@ taglib uri="http://www.springframework.org/tags"  prefix="spring"%>
 <html>
 <head>
-<title><spring:message code="tietokone.list.title"/></title>
+<title>Tietokoneen listauksen näyttäminen</title>
 <link rel="stylesheet" type="text/css" href="resources/styles/common.css">
 <link rel="stylesheet" type="text/css" href="resources/styles/form.css">
 
@@ -15,7 +15,7 @@
 		<a href="?lang=en">en</a> | <a href="?lang=fi">fi</a> | <a href="?lang=sv">sv</a>
 	</div>
 	<h1>
-		<spring:message code="tietokone.list.heading"/>
+		Tietokoneen listaus
 	</h1>
 	<c:forEach var="tietokone" items="${tietokoneet}">
 		<p>${tietokone.merkki} ja ${tietokone.malli}</p>
