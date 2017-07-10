@@ -28,26 +28,5 @@ public class SpringServletConfiguration {
  
         return viewResolver;
     }
-    @Bean
-    public ReloadableResourceBundleMessageSource messageSource() {
-    	ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-    	messageSource.setBasename("classpath:messages");
-    	messageSource.setDefaultEncoding("UTF-8");
-    	
-    	return messageSource;
-    }
 
-    @Bean
-    public CookieLocaleResolver localeResolver() {
-    	CookieLocaleResolver localeResolver = new CookieLocaleResolver();
-    	localeResolver.setDefaultLocale(StringUtils.parseLocaleString("fi"));
-    	
-    	return localeResolver;
-    }
-
-    public void addInterceptors(InterceptorRegistry registry) {
-    	LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
-    	interceptor.setParamName("lang");
-    	registry.addInterceptor(interceptor);
-    }
 }

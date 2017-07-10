@@ -58,10 +58,4 @@ public class TietokoneController {
 		return "listaa";
 	}
 
-	@RequestMapping(value="nayta/{id}", method=RequestMethod.GET)
-	public String getView(@PathVariable Integer id, Model model) {
-		Tietokone tk = tkp.findById(id);
-		model.addAttribute("tietokone", tk);
-		return "nayta";
-	}
 }
