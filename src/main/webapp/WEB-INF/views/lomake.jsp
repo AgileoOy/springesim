@@ -8,7 +8,7 @@
 <html>
 
 <head>
-<title><spring:message code="tietokone.create.title"/></title>
+<title>Lisää tietokone</title>
 <link rel="stylesheet" type="text/css" href="resources/styles/common.css">
 <link rel="stylesheet" type="text/css" href="resources/styles/form.css">
 <style>
