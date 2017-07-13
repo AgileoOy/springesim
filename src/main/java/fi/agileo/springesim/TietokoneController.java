@@ -33,6 +33,8 @@ public class TietokoneController {
 	@RequestMapping(value = "/lomake", method = RequestMethod.GET)
 	public String newForm(Model model) {
 		Tietokone tk = new Tietokone();
+		tk.setMerkki("alustus Merkki");
+		tk.setMalli("alustus Malli");
 		model.addAttribute("tietokone", tk);
 		return "lomake";
 	}
@@ -57,5 +59,12 @@ public class TietokoneController {
 		model.addAttribute("tietokoneet", tkoneet);
 		return "listaa";
 	}
+	
+	@RequestMapping(value="nayta/{id}", method=RequestMethod.GET)
+	public String getView(@PathVariable Integer id, Model model) {
+		Tietokone tk = tkp.findById(id);
+		model.addAttribute("tietokone", tk);
+		return "nayta";
+	}	
 
 }
