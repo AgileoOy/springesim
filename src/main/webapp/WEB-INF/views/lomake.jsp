@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="UTF-8"%>
 <%@ page session="false" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -8,7 +8,7 @@
 <html>
 
 <head>
-<title>Lisää tietokone</title>
+<title><spring:message code="tietokone.create.title"/></title>
 <link rel="stylesheet" type="text/css" href="resources/styles/common.css">
 <link rel="stylesheet" type="text/css" href="resources/styles/form.css">
 <style>
@@ -24,7 +24,7 @@
 		<a href="?lang=en">en</a> | <a href="?lang=fi">fi</a> | <a href="?lang=sv">sv</a>
 	</div>
 	<h1>
-		Tietokoneen tiedot
+		<spring:message code="tietokone.view.heading"/>
 	</h1>
 	<h2>Uusi kone</h2>
 
@@ -32,17 +32,17 @@
 
 		<table>
 			<tr>
-				<td><label for="merkki">Merkki: </label></td>
+				<td><label for="merkki"><spring:message code="tietokone.create.mark"/>: </label></td>
 				<td><form:input path="merkki" id="merkki" /></td>
 				<td><form:errors path="merkki" cssClass="error" /></td>
 			</tr>
 			<tr>
-				<td><label for="malli">Malli: </label></td>
+				<td><label for="malli"><spring:message code="tietokone.create.model"/>: </label></td>
 				<td><form:input path="malli" id="malli" /></td>
 				<td><form:errors path="malli" cssClass="malli" /></td>
 			</tr>
 			<tr>
-				<td><input type="submit" value="Lisää"  /></td>
+				<td><input type="submit" value=<spring:message code="tietokone.create.add"/>  /></td>
 			</tr>
 
 		</table>
